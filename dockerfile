@@ -8,7 +8,7 @@ RUN gcc -o /app/Cli /app/Cli.c /app/config.h
 #RUN gcc -o /app/Clis /app/Clis.c /app/config.h
 FROM alpine:latest
 RUN apk update && apk upgrade && apk add bash icu-libs musl-dev
-COPY --from=backend /app/Cli ./app/TCli
+COPY --from=backend /usr/local/bin/cli ./app/TCli
 COPY --from=builder /app/Cli ./app/Cli
 #COPY --from=builder /app/Clis ./app/Clis
 COPY ./run.sh /app/run.sh
